@@ -1,3 +1,48 @@
+<?php
+  require 'assets/vendor/PHPMailer/PHPMailerAutoload.php';
+  if(isset($_POST['submit'])){
+    $name = strip_tags(stripslashes($_POST['name']));
+    $email = strip_tags(stripslashes($_POST['email']));
+    $subject = strip_tags(stripslashes($_POST['subject']));
+    $message = strip_tags(stripslashes($_POST['message']));
+    $altmess = $message;
+    $to = "mosesafolsons@gmail.com";
+    $nameto = "Feranmi Afolabi";
+    $from  = "support@magnatedevelopment.com"; 
+    $namefrom = "($name - $email) Zuri";
+    $mail = new PHPMailer();
+    $mail->SMTPDebug = 0;
+    $mail->CharSet = 'UTF-8';
+    $mail->isSMTP();
+    $mail->SMTPAuth   = true;
+    $mail->Host   = "wgh11.wghservers.com";
+    $mail->Port       = 465;
+    $mail->Username   = $from;
+    $mail->Password   = "Reachforsuccess2021@";
+    $mail->SMTPSecure = "ssl";
+    $mail->setFrom($from,$namefrom);
+    $mail->addCC($from,$namefrom);
+    $mail->Subject  = $subject;
+    $mail->isHTML();
+    $mail->Body = $message;
+    $mail->AltBody  = $altmess;
+    $mail->addAddress($to, $nameto);
+    if($mail->send()){
+        $result;
+        $result = "
+            <div class='alert alert-success' role='alert'>
+                Success! I'll get to you shortly.
+            </div>";
+    }
+    else{
+        $result;
+        $result = "
+            <div class='alert alert-danger' role='alert'>
+                Ooops... Something went wrong. Try Again Later.
+            </div>";
+    }
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,7 +95,7 @@
   <section id="hero" class="d-flex flex-column justify-content-center">
     <div class="container" data-aos="zoom-in" data-aos-delay="100">
       <h1>Feranmi Afolabi</h1>
-      <p>I'm <span class="typed" data-typed-items="Web Developer, Designer, Freelancer"></span></p>
+      <p><span class="typed" data-typed-items="Web Developer, Designer, Mechatronics Technician, Freelancer"></span></p>
       <div class="social-links">
         <a href="https://twitter.com/our_uncle?=09" class="twitter"><i class="bx bxl-twitter"></i></a>
         <a href="https://www.instagram.com/_feranmiafolabi_/" class="instagram"><i class="bx bxl-instagram"></i></a>
@@ -67,7 +112,7 @@
 
         <div class="section-title">
           <h2>About</h2>
-          <p>Web Developement Enthusiast who is keen to find oppourtunities in programming.</p>
+          <p>Web Development Enthusiast who is keen to find oppourtunities in programming.</p>
         </div>
 
         <div class="row">
@@ -83,7 +128,7 @@
               <div class="col-lg-6">
                 <ul>
                   <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>2 December 2001</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>www.magnatedevelopement.com</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span><a href="https://magnatedevelopment.com">www.magnatedevelopement.com</a></span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+234 809288311</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Abuja, Nigeria</span></li>
                 </ul>
@@ -92,7 +137,7 @@
                 <ul>
                   <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>20</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>ND</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>mosesafolsons@gmail.com</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span><a href="mailto:Mosesafolsons@gmail.com">Mosesafolsons@gmail.com</a></span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li>
                 </ul>
               </div>
@@ -116,50 +161,49 @@
             <h3 class="resume-title">Sumary</h3>
             <div class="resume-item pb-0">
               <h4>Afolabi Feranmi Beloved</h4>
-              <p><em>Innovative and deadline-driven Graphic Designer with 3+ years of experience designing and developing user-centered digital/print marketing material from initial concept to final, polished deliverable.</em></p>
+              <p><em>Innovative and deadline-driven Freelancer with 2+ years of experience designing and developing user-centered web applications.</em></p>
               <ul>
                 <li>Abuja, Nigeria</li>
                 <li>(234) 809-228-8311</li>
-                <li>mosesafolsons@gmail.com</li>
+                <li><a href="mailto:Mosesafolsons@gmail.com">Mosesafolsons@gmail.com</a></li>
               </ul>
             </div>
 
             <h3 class="resume-title">Education</h3>
             <div class="resume-item">
-              <h4>Master of Fine Arts &amp; Graphic Design</h4>
-              <h5>2015 - 2016</h5>
-              <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-              <p>Qui deserunt veniam. Et sed aliquam labore tempore sed quisquam iusto autem sit. Ea vero voluptatum qui ut dignissimos deleniti nerada porti sand markend</p>
+              <h4>HTML5 and CSS Certification</h4>
+              <h5>2017 - 2018</h5>
+              <p><em>Aptech Computer Education, Nigeria</em></p>
+              <p>Certification in Designing Static web pages.</p>
             </div>
             <div class="resume-item">
-              <h4>Bachelor of Fine Arts &amp; Graphic Design</h4>
-              <h5>2010 - 2014</h5>
-              <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-              <p>Quia nobis sequi est occaecati aut. Repudiandae et iusto quae reiciendis et quis Eius vel ratione eius unde vitae rerum voluptates asperiores voluptatem Earum molestiae consequatur neque etlon sader mart dila</p>
+              <h4>Mechatronics And Automation Technology</h4>
+              <h5>2019 - 2021</h5>
+              <p><em>Model Skills Training Center, ITF Nigeria</em></p>
+              <p>Certification in the use of mechanical, electrical and computer science knowledge to solve modern industrial challenges.</p>
             </div>
           </div>
           <div class="col-lg-6">
             <h3 class="resume-title">Professional Experience</h3>
             <div class="resume-item">
-              <h4>Senior graphic design specialist</h4>
-              <h5>2019 - Present</h5>
-              <p><em>Experion, New York, NY </em></p>
+              <h4>E-Learning Developer</h4>
+              <h5>2019 - 2020</h5>
+              <p><em><a href="http://www.cagewox.com.ng/">Cagewox Nig Ltd</a>, Nigeria</em></p>
               <ul>
-                <li>Lead in the design, development, and implementation of the graphic, layout, and production communication materials</li>
-                <li>Delegate tasks to the 7 members of the design team and provide counsel on all aspects of the project. </li>
-                <li>Supervise the assessment of all graphic materials in order to ensure quality and accuracy of the design</li>
-                <li>Oversee the efficient use of production project budgets ranging from $2,000 - $25,000</li>
+                <li>Lead the team on the development and use of the Moodle E-Learning Software</li>
+                <li>Delegated tasks to the members of the team to carryout updates to the software</li>
+                <li>Facilitated the training of Administrative users.</li>
+                <li>Supervised the installation of the <a href="http://learning.trcn.gov.ng/login/index.php">software</a> on the <a href="http://trcn.gov.ng">clients</a> servers</li>
               </ul>
             </div>
             <div class="resume-item">
-              <h4>Graphic design specialist</h4>
-              <h5>2017 - 2018</h5>
-              <p><em>Stepping Stone Advertising, New York, NY</em></p>
+              <h4>Web Developer</h4>
+              <h5>2020 - Present</h5>
+              <p><em><a href="https://indetix.com.ng/">Indetix Limited</a>, Nigeria</em></p>
               <ul>
-                <li>Developed numerous marketing programs (logos, brochures,infographics, presentations, and advertisements).</li>
-                <li>Managed up to 5 projects or tasks at a given time while under pressure</li>
-                <li>Recommended and consulted with clients on the most appropriate graphic design</li>
-                <li>Created 4+ design presentations and proposals a month for clients and account managers</li>
+                <li>Single-handedly developed the company's <a href="https://indetix.com.ng/">website</a> to fit the company's standard</li>
+                <li>Set up the Live Chat function for ease of access to potential clients </li>
+                <li>Lead the team that developed the <a href="https://p-yes.net/">Presidential Youth Empowerment Scheme</a> website and portal as a contract</li>
               </ul>
             </div>
           </div>
@@ -177,9 +221,9 @@
         </div>
 
         <div class="row">
-          <div class="col-lg-3 col-md-6">
+          <div class="col-12">
             <div class="count-box">
-              <img src="assets/img/zuri.png"/>
+              <a href="https://training.zuri.team/enrollment"><img src="assets/img/zuri.png"/></a>
               <span data-purecounter-start="0" data-purecounter-end="1" data-purecounter-duration="1" class="purecounter"></span>
               <p>Happy Applicant</p>
             </div>
@@ -209,7 +253,7 @@
               <div class="email">
                 <i class="bi bi-envelope"></i>
                 <h4>Email:</h4>
-                <p>Mosesafolsons@gmail.com</p>
+                <p><a href="mailto:Mosesafolsons@gmail.com">Mosesafolsons@gmail.com</a></p>
               </div>
 
               <div class="phone">
@@ -223,8 +267,8 @@
           </div>
 
           <div class="col-lg-8 mt-5 mt-lg-0">
-
-            <form action="index.php" method="POST" role="form" class="php-email-form">
+          <?php global $result; echo $result; ?>
+            <form action="index.php" method="POST" role="form" class="">
               <div class="row">
                 <div class="col-md-6 form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
@@ -237,9 +281,9 @@
                 <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
               </div>
               <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
+                <textarea class="form-control" name="message" rows="4" placeholder="Message" required></textarea>
+              </div></br>
+              <div class="text-center"><button class="btn btn-primary" type="submit" name="submit">Send Message</button></div>
             </form>
 
           </div>
