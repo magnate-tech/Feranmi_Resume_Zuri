@@ -217,7 +217,7 @@
 
         <div class="section-title">
           <h2>Reason</h2>
-          <p><a href="https://training.zuri.team/enrollment">Zuri.Training</a></p>Entry Submission</p>
+          <p><a href="https://training.zuri.team/enrollment">Zuri.Training</a></p>Stage - 3 Submission</p>
         </div>
 
         <div class="row">
